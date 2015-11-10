@@ -1,0 +1,22 @@
+#welcome {
+  background: url(image-path("top-pods.png"));
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#front-page {
+  text-align: center;
+  background: rgba(255, 255, 255, .99);
+  margin-top: 130px;
+  padding-bottom: 30px;
+}
+
+#logo {
+  border-radius: 50%;
+  border: 3px solid #3f51b5;
+  color: #3f51b5;
+  margin-right: 150px;
+  margin-left: 150px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}

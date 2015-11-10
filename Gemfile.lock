@@ -43,21 +43,12 @@ GEM
       faraday_middleware
       hashie
       oauth2
-    autoprefixer-rails (6.0.3)
-      execjs
-      json
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.5.1)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.3.0)
-    bootstrap_form (2.3.0)
-    bootswatch-rails (3.3.5)
-      railties (>= 3.1)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -190,9 +181,6 @@ PLATFORMS
 DEPENDENCIES
   audiosearch
   better_errors
-  bootstrap-sass
-  bootstrap_form
-  bootswatch-rails
   coffee-rails (~> 4.1.0)
   figaro
   jbuilder (~> 2.0)

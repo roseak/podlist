@@ -13,4 +13,24 @@ class OauthAudiosearch
   def episode(code)
     client.get_episode(code)
   end
+
+  def show(code)
+    client.get_show(code)
+  end
+
+  def search(query, type = 'episodes')
+    client.search(query, type)
+  end
+
+  def tastemakers(query)
+    client.get_tastemakers(query)
+  end
+
+  def trends
+    client.get_trending
+  end
+
+  def person(query)
+    client.get_person(query)
+  end
 end
