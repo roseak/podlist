@@ -5,14 +5,14 @@
     <% if current_user %>
       <h3><%= current_user.name %></h3><br>
       <div class="col-md-6">
-        <%= link_to "ENTER", home_index_path, class: "btn btn-lg btn-default btn-block btn-primary" %>
+        <%= link_to "ENTER", home_path, class: "btn btn-lg btn-default btn-block btn-primary" %>
       </div>
       <div class="col-md-6">
         <%= link_to "LOGOUT", logout_path, method: :delete, class: "btn btn-lg btn-default btn-block btn-primary" %>
       </div>
     <% else %>
       <div class="col-sm-offset-1 col-sm-10">
-        <%= link_to "LOGIN", twitter_login_path, class: "btn btn-lg btn-default btn-block btn-primary" %>
+        <%= link_to "LOGIN", login_path, class: "btn btn-lg btn-default btn-block btn-primary" %>
       </div>
     <% end %>
   </div>

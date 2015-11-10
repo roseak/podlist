@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'bootstrap_form'
 gem 'audiosearch'
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'pry'
