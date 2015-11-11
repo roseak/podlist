@@ -24,6 +24,9 @@
 
 #home-page {
   padding-top: 20px;
+}
+
+body {
   background-color: #fafafa;
 }
 
@@ -38,6 +41,18 @@
 }
 
 .playlists-head {
+  text-align: center;
+}
+
+.playlist-name {
+  text-align: center;
+}
+
+.title {
+  color: #1565c0;
+}
+
+.delete-playlist {
   text-align: center;
 }
 

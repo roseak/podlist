@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   delete '/logout', as: :logout, to: 'sessions#destroy'
   get '/home', to: 'home#index'
   resources :playlists, only: [:index, :show]
+  resources :users, only: [:index, :show]
 end
