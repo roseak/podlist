@@ -1,11 +1,11 @@
 <body id="welcome">
   <div class="row">
     <div class="col s4 offset-s4 z-depth-5" id="front-page">
-      <h1 class="z-depth-2" id="logo">pl</h1>
-      <h1>PodList</h1>
+      <%= image_tag "micophone.svg", class: "circle z-depth-2", id: "microphone" %>
+      <h1 id="logo">PodList</h1>
       <p class="lead">podcast playlists made simple</p>
       <% if current_user %>
-        <h3><%= current_user.name %></h3><br>
+        <h4 id="user-name"><%= current_user.name %></h4>
         <div class="col m6">
           <%= link_to "ENTER", home_path, class: "btn btn-lg btn-default btn-block btn-primary front-button" %>
         </div>

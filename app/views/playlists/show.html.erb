@@ -1,0 +1,94 @@
+<!-- <script type="text/javascript" charset="utf-8">
+    $(document).ready(function()
+            {
+        var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
+        {
+            mp3: "MyMP3File.mp3"
+        }, {
+                supplied: "mp3",
+                cssSelectorAncestor: "#cp_container_1",
+                swfPath: "app/assets/javascripts",
+                wmode: "window"
+        });
+    });
+</script> -->
+
+<script type="text/javascript">
+ $(document).ready(function(){
+  $("#jquery_jplayer_1").jPlayer({
+   ready: function () {
+    $(this).jPlayer("setMedia", {
+     m4a: "https://www.audiosear.ch/media/audio_file/162d/stream.mp3",
+     oga: "https://www.audiosear.ch/media/audio_file/162d/stream.ogg"
+    });
+   },
+   swfPath: "/app/assets/javascripts",
+   supplied: "m4a, oga",
+   solution: 'html, flash',
+   preload: 'metadata',
+   volume: 0.8,
+   muted: false,
+   backgroundColor: '#000000',
+   cssSelectorAncestor: '#jp_container_1',
+   cssSelector: {
+    videoPlay: '.jp-video-play',
+    play: '.jp-play',
+    pause: '.jp-pause',
+    stop: '.jp-stop',
+    seekBar: '.jp-seek-bar',
+    playBar: '.jp-play-bar',
+    mute: '.jp-mute',
+    unmute: '.jp-unmute',
+    volumeBar: '.jp-volume-bar',
+    volumeBarValue: '.jp-volume-bar-value',
+    volumeMax: '.jp-volume-max',
+    playbackRateBar: '.jp-playback-rate-bar',
+    playbackRateBarValue: '.jp-playback-rate-bar-value',
+    currentTime: '.jp-current-time',
+    duration: '.jp-duration',
+    title: '.jp-title',
+    fullScreen: '.jp-full-screen',
+    restoreScreen: '.jp-restore-screen',
+    repeat: '.jp-repeat',
+    repeatOff: '.jp-repeat-off',
+    gui: '.jp-gui',
+    noSolution: '.jp-no-solution'
+   },
+   errorAlerts: false,
+   warningAlerts: false
+  });
+ });
+</script>
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+
+  <h3 class="playlist-name"><%= @playlist.name %></h3>
+  <ul class="collection">
+    <% @playlist.episodes.each do |episode| %>
+      <li class="collection-item avatar">
+        <div class="episode">
+          <% if episode_info(episode).image_files.to_a.empty? == false  %>
+            <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle">
+          <% else %>
+            <i class="material-icons circle red">radio</i>
+          <% end %>
+          <span class="title"><%= episode_info(episode).title %></span>
+          <p><%= episode_info(episode).description %><br>
+             <%= episode_info(episode).audio_files %></p>
+          <div id="jquery_jplayer_1"></div>
+          <div id="jp_container_1">
+            <a href="#" class="jp-play">Play</a>
+            <a href="#" class="jp-pause">Pause</a>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <div class="delete-playlist">
+    <%= link_to "Delete Playlist", "/playlists/#{@playlist.id}",
+        data: {confirm: "Playlist will be removed.  Are you sure?"},
+        method: :delete,
+        class: "btn btn-default",
+        id: "delete-#{@playlist.id}" %>
+  </div>
+</div>
