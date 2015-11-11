@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'audiosearch', '~> 1.0.1'
 gem 'omniauth-twitter'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'pry'
