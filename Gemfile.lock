@@ -37,7 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    audiosearch (1.0.0)
+    audiosearch (1.0.1)
       excon
       faraday
       faraday_middleware
@@ -80,7 +80,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    jwt (1.5.1)
+    jwt (1.5.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -179,7 +179,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  audiosearch
+  audiosearch (~> 1.0.1)
   better_errors
   coffee-rails (~> 4.1.0)
   figaro

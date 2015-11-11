@@ -1,0 +1,11 @@
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to "PodList", home_path, class: "brand-logo" %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= current_user.name %></li>
+        <li><%= link_to "Logout", logout_path, method: :delete %>
+      </ul>
+    </div>
+  </nav>
+</div>

@@ -33,4 +33,8 @@ class OauthAudiosearch
   def person(query)
     client.get_person(query)
   end
+
+  def related(query)
+    client.get_related(query)
+  end
 end
