@@ -1,2 +1,17 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+  <%= image_tag "#{@user.profile_pic.gsub("_normal", "")}", id: "user-image" %>
+  <h4><%= @user.name %></h4>
+  <div class="row">
+    <% @user.playlists.each do |playlist| %>
+      <div class="col m4">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><h4><%= link_to "#{playlist.name}", playlist_path(playlist) %></h4></span>
+            <h6>Episodes: <%= playlist.episodes.size %></h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

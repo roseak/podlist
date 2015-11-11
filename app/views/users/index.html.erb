@@ -1,2 +1,9 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+  <h1 class="users-head">Users<h1>
+  <% @users.each do |user| %>
+    <%= image_tag "#{user.profile_pic.gsub("_normal", "")}", id: "user-image" %>
+    <h4><%= user.name %></h4>
+    <h5>Playlists: <%= user.playlists.count %></h5>
+  <% end %>
+</div>
