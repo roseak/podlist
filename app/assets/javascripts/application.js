@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require jquery.jplayer.min
 //= require_tree .
+
+$(document).ready(function(){
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+});

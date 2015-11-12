@@ -1,6 +1,55 @@
+
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
-  <%= @show.title %>
-  <%= @show.description %>
-  <h6>Number of episodes: <%= @show.number_of_episodes %></h6>
+  <div class="row">
+    <div class="col m10 offset-m1">
+      <div class="card">
+        <div class="card-content row">
+          <div class="col m4">
+            <%= image_tag "#{@show.image_files.first.url.full}", id: "show-image-main" %>
+          </div>
+          <div class="col m8">
+            <div id="show-title"><%= @show.title %></div>
+            <div><%= @show.description %></div>
+            <div><h6>Number of episodes: <%= @show.number_of_episodes %></h6></div>
+            <div><%= link_to "Facebook", @show.web_profiles.facebook.url %>
+            <%= link_to "Twitter", @show.web_profiles.twitter.url %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col m10 offset-m1">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <% @show.episode_ids.first(2).each do |episode| %>
+          <li>
+            <!-- <div class="episode"> -->
+              <div class="collapisble-header">
+                <!-- <% if episode_info(episode).image_files.to_a.empty? == false  %>
+                  <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
+                <% else %>
+                  <i class="material-icons circle red">radio</i>
+                <% end %> -->
+                <span class="title"><%= episode_info(episode).title %></span>
+              </div>
+              <div class="collapsible-body">
+                  <p><%= episode_info(episode).description %><br>
+                   <%= episode_info(episode).audio_files %></p>
+                <!-- <div id="jquery_jplayer_1"></div>
+                <div id="jp_container_1">
+                  <a href="#" class="jp-play">Play</a>
+                  <a href="#" class="jp-pause">Pause</a>
+                </div> -->
+              </div>
+            <!-- </div> -->
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
+
+<script>
+
+</script>
