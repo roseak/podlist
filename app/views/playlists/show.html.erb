@@ -1,19 +1,4 @@
-<!-- <script type="text/javascript" charset="utf-8">
-    $(document).ready(function()
-            {
-        var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
-        {
-            mp3: "MyMP3File.mp3"
-        }, {
-                supplied: "mp3",
-                cssSelectorAncestor: "#cp_container_1",
-                swfPath: "app/assets/javascripts",
-                wmode: "window"
-        });
-    });
-</script> -->
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
  $(document).ready(function(){
   $("#jquery_jplayer_1").jPlayer({
    ready: function () {
@@ -58,22 +43,24 @@
    warningAlerts: false
   });
  });
-</script>
+</script> -->
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
 
-  <h3 class="playlist-name"><%= @playlist.name %></h3>
+  <div id="playlist-name"><%= @playlist.name %></div>
   <ul class="collection">
     <% @playlist.episodes.each do |episode| %>
       <li class="collection-item avatar">
         <div class="episode">
           <% if episode_info(episode).image_files.to_a.empty? == false  %>
-            <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle">
+            <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
           <% else %>
             <i class="material-icons circle red">radio</i>
           <% end %>
           <span class="title"><%= episode_info(episode).title %></span>
-          <p><%= episode_info(episode).description %><br>
+          <p><%= link_to "#{episode_info(episode).show_title}",
+                 show_path(episode_info(episode).show_id) %><br>
+             <%= episode_info(episode).description %><br>
              <%= episode_info(episode).audio_files %></p>
           <div id="jquery_jplayer_1"></div>
           <div id="jp_container_1">

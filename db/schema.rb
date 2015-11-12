@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20151111175225) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "profile_pic"
+    t.string   "location"
+    t.string   "bio"
   end
 
 end

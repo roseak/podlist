@@ -4,7 +4,8 @@
       <%= image_tag "micophone.svg", id: "microphone-nav" %>
       <%= link_to "PodList", home_path, class: "brand-logo", id: "nav-logo" %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to "Playlists", playlists_path %><li>
+        <li><%= link_to "Playlists", playlists_path %></li>
+        <li><%= link_to "Users", users_path %></li>
         <li><%= link_to current_user.name, user_path(current_user) %></li>
         <li><%= link_to "Logout", logout_path, method: :delete %>
       </ul>

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/home', to: 'home#index'
   resources :playlists, only: [:index, :show, :destroy]
   resources :users, only: [:index, :show]
+  resources :shows, only: [:show]
 end

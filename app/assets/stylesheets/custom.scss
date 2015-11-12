@@ -76,12 +76,18 @@ body {
   background-color: #1565c0;
 }
 
-.playlists-head {
+#playlists-head {
   text-align: center;
+  font-family: 'Unica One', cursive;
+  font-weight: bold;
+  font-size: 55px;
 }
 
-.playlist-name {
+#playlist-name {
   text-align: center;
+  font-family: 'Unica One', cursive;
+  font-weight: bold;
+  font-size: 50px;
 }
 
 .title {
@@ -94,11 +100,17 @@ body {
 
 #user-image {
   height: 200px;
-  border: 4px solid;
 }
 
-.users-head {
+#users-head {
   text-align: center;
+  font-family: 'Unica One', cursive;
+  font-weight: bold;
+  font-size: 55px;
+  margin-bottom: 20px;
+}
+
+#episode-photo {
 }
 
 #jquery-jplayer-1 {

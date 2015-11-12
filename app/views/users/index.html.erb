@@ -1,9 +1,19 @@
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
-  <h1 class="users-head">Users<h1>
-  <% @users.each do |user| %>
-    <%= image_tag "#{user.profile_pic.gsub("_normal", "")}", id: "user-image" %>
-    <h4><%= user.name %></h4>
-    <h5>Playlists: <%= user.playlists.count %></h5>
-  <% end %>
+  <div id="users-head">Users</div>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col m4">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag "#{user.profile_pic.gsub("_normal", "")}" %>
+          </div>
+          <div class="card-content">
+            <h5><%= link_to user.name, user_path(user) %></h5>
+            <h6>Playlists: <%= user.playlists.count %></h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
