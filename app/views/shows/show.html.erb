@@ -51,20 +51,22 @@
   <!-- episode list -->
   <div class="row">
     <div class="col m10 offset-m1" id="collapsed-list">
-      <ul class="collapsible popout" data-collapsible="accordion">
+      <ul class="collapsible popout hoverable" data-collapsible="accordion">
         <% @show.episode_ids.first(5).each do |episode| %>
           <li>
             <div class="collapsible-header">
               <div class="row">
-                <div class="col m2">
+                <div class="col m1">
                   <% if episode_info(episode).image_files.to_a.empty? == false  %>
-                    <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
+                    <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", id="episode-photo">
                   <% else %>
                     <i class="material-icons circle red">radio</i>
                   <% end %>
                 </div>
-                <div class="col m9">
-                  <span class="show-title"><%= episode_info(episode).title %></span>
+                <div class="col m10">
+                  <span class="show-title truncate"><%= episode_info(episode).title %></span>
+                  <p id="episode-timing"><%= episode_info(episode).date_created %> |
+                     <%= Time.at(episode_info(episode).duration).utc.strftime("%H:%M:%S") %></p>
                 </div>
                 <div class="col m1">
                   <div id="add-to-playlist">

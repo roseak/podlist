@@ -7,6 +7,19 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find_by(id: params[:id])
   end
 
+  def new
+    @playlist = Playlist.new
+  end
+
+  def create
+    @playlist = Playlist.create(
+      name: params[:name],
+      episodes: [params[:episode_id].to_i],
+      user_id: current_user.id
+    )
+    redirect_to playlist_path(@playlist)
+  end
+
   def update
     playlist = Playlist.find_by(id: params[:id])
     playlist.episodes << params[:episode_id].to_i
@@ -16,6 +29,6 @@ class PlaylistsController < ApplicationController
 
   def destroy
     Playlist.find(params[:id]).delete
-    redirect_to root_path
+    redirect_to user_path(current_user)
   end
 end

@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def index
     @episodes = episodes(params[:search])
-    
   end
 
   private
