@@ -1,0 +1,48 @@
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+  <div id="search-title">Search Results for <%= @search %></div>
+
+  <div class="row">
+    <div class="col m10 offset-m1" id="collapsed-list">
+      <ul class="collapsible popout hoverable" data-collapsible="accordion">
+        <% @episodes.each do |episode| %>
+          <li>
+            <div class="collapsible-header">
+              <div class="row">
+                <div class="col m1">
+                  <% if episode.image_urls.to_a.empty? == false  %>
+                    <img src="<%= episode.image_urls.thumb %>", alt="", id="episode-photo">
+                  <% else %>
+                    <i class="material-icons red">radio</i>
+                  <% end %>
+                </div>
+                <div class="col m10">
+                  <div class="show-title truncate"><%= episode.title %></div>
+                  <div id="show-network"><%= episode.show_title %> from <%= episode.network %></div>
+                  <div id="episode-timing"><%= episode.date_created %> |
+                  <%= Time.at(episode.duration).utc.strftime("%H:%M:%S") %></div>
+                </div>
+                <div class="col m1">
+                  <div id="add-to-playlist">
+                    <a class="modal-trigger" href="#modal-<%= episode.id %>">
+                        <i class="material-icons">playlist_add</i></a>
+                    <%= render partial: "layouts/add_to_playlist_modal",
+                               locals: {episode: episode} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="collapsible-body">
+              <p><%= episode.description %></p>
+              <p>
+                Categories: <% episode.categories.each do |category| %>
+                              <%= category.name %>
+                            <% end %>
+              </p>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

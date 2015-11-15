@@ -2,19 +2,9 @@
 <div class="container" id="home-page">
   <nav>
     <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <!-- <input id="search" type="search" required>
-          <label for="search"><i class="material-icons">search</i> Search for episodes...</label>
-          <i class="material-icons">close</i> -->
-          <%= form_tag('/search', remote: true ) do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search episodes" %>
-            <%= submit_tag %>
-          <% end %>
-        </div>
-      </form>
+      <%= form_tag(search_path, method: "get") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search Episodes" %>
+      <% end %>
     </div>
   </nav>
-
-  </div>
 </div>

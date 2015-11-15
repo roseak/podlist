@@ -90,6 +90,13 @@ body {
   font-size: 50px;
 }
 
+#search-title {
+  text-align: center;
+  font-family: 'Unica One', cursive;
+  font-weight: bold;
+  font-size: 50px;
+}
+
 .title {
   color: #0d47a1;
   font-weight: bold;
@@ -153,6 +160,12 @@ body {
 
 #episode-timing {
   margin-left: 15px;
+  line-height: 1.3rem;
+}
+
+#show-network {
+  margin-left: 15px;
+  line-height: 1.3rem;
 }
 
 #episode-photo {

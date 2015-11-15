@@ -60,7 +60,7 @@
                   <% if episode_info(episode).image_files.to_a.empty? == false  %>
                     <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", id="episode-photo">
                   <% else %>
-                    <i class="material-icons circle red">radio</i>
+                    <i class="material-icons red">radio</i>
                   <% end %>
                 </div>
                 <div class="col m10">
@@ -75,8 +75,6 @@
                     <%= render partial: "layouts/add_to_playlist_modal",
                                locals: {episode: episode_info(episode)} %>
                   </div>
-
-                  <!-- <i class="material-icons">add</i> -->
                 </div>
               </div>
             </div>
