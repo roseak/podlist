@@ -11,7 +11,7 @@
           <i class="material-icons circle red">radio</i>
         <% end %>
         <span class="title"><%= episode_info(episode).title %></span>
-        <span class="audio-duration"><%= Time.at(episode_info(episode).audio_files.first.duration).utc.strftime("%H:%M:%S") %></span>
+        <span class="audio-duration"><%= Time.at(episode_info(episode).duration).utc.strftime("%H:%M:%S") %></span>
         <p><%= link_to "#{episode_info(episode).show_title}",
                show_path(episode_info(episode).show_id) %><br>
            <%= episode_info(episode).description %></p>

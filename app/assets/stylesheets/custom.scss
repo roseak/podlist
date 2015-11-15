@@ -131,9 +131,33 @@ body {
   font-size: 20px;
 }
 
+.show-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-left: 15px;
+  line-height: 1.3rem;
+}
+
+#add-to-playlist-title {
+  font-family: 'Unica One', cursive;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#episode-title-modal {
+  text-align: center;
+  font-size: 16px;
+}
+
+#episode-timing {
+  margin-left: 15px;
+}
+
 #episode-photo {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   margin-top: 10px;
 }
 

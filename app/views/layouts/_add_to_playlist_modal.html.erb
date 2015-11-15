@@ -1,0 +1,21 @@
+<div id="modal-<%= episode.id %>" class="modal">
+
+  <div class="modal-content">
+    <div id="add-to-playlist-title">Add to a Playlist</div>
+    <div id="episode-title-modal"><%= episode.title %></div>
+    <% current_user.playlists.each do |playlist| %>
+      <div><%= link_to "#{playlist.name}", playlist_path(playlist,
+               {episode_id: episode.id}), method: :put %></div>
+    <% end %>
+
+    <form action="/playlists" id="new_playlist" method="post">
+      <div class="input-field col s6">
+        <input id="name" name="name" type="text" />
+        <label for="name">Playlist Name</label>
+        <input id="episode_id" name ="episode_id" type="hidden" value="<%= episode.id %>" />
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+          Submit<i class="material-icons right">send</i></button>
+      </div>
+    </form>
+  </div>
+</div>

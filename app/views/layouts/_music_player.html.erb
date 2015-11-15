@@ -1,0 +1,50 @@
+<div id="jquery_jplayer_<%= locals[:id] %>" class="jp-jplayer"></div>
+<div id="jp_container_<%= locals[:id] %>" class="jp-audio">
+  <div class="jp-type-single">
+    <div class="jp-gui jp-interface">
+      <ul class="jp-controls">
+        <li><a href="javascript:;" class="jp-play material-icons" tabindex="1">&#xE039;</a></li>
+        <li><a href="javascript:;" class="jp-pause material-icons" tabindex="1">&#xE036;</a></li>
+        <li><a href="javascript:;" class="jp-mute material-icons" tabindex="1" title="mute">&#xE04E;</a></li>
+        <li><a href="javascript:;" class="jp-unmute material-icons" tabindex="1" title="unmute">&#xE050;</a></li>
+      </ul>
+
+        <div class="jp-progress">
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+          </div>
+        </div>
+
+        <ul class="jp-time-holder">
+          <li class="jp-current-time" role="timer" aria-label="time">&nbsp;</li>&nbsp;/
+          <li class="jp-duration" role="timer" aria-label="duration">&nbsp;</li>
+        </ul>
+
+        <div class="jp-volume-bar">
+          <div class="jp-volume-bar-value"></div>
+        </div>
+
+      </div>
+    <div class="jp-no-solution">
+      <span>Update Required</span>
+      To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#jquery_jplayer_<%= locals[:id] %>").jPlayer({
+    ready: function () {
+      $(this).jPlayer("setMedia", {
+        title: "<%= locals[:title] %>",
+        m4a: "<%= locals[:mp3] %>",
+        oga: "<%= locals[:ogg] %>"
+      });
+    },
+    cssSelectorAncestor: "#jp_container_<%= locals[:id] %>",
+    swfPath: "/js",
+    supplied: "m4a, oga",
+  });
+});
+</script>
