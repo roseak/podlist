@@ -1,49 +1,3 @@
-<!-- <script type="text/javascript">
- $(document).ready(function(){
-  $("#jquery_jplayer_1").jPlayer({
-   ready: function () {
-    $(this).jPlayer("setMedia", {
-     m4a: "https://www.audiosear.ch/media/audio_file/162d/stream.mp3",
-     oga: "https://www.audiosear.ch/media/audio_file/162d/stream.ogg"
-    });
-   },
-   swfPath: "/app/assets/javascripts",
-   supplied: "m4a, oga",
-   solution: 'html, flash',
-   preload: 'metadata',
-   volume: 0.8,
-   muted: false,
-   backgroundColor: '#000000',
-   cssSelectorAncestor: '#jp_container_1',
-   cssSelector: {
-    videoPlay: '.jp-video-play',
-    play: '.jp-play',
-    pause: '.jp-pause',
-    stop: '.jp-stop',
-    seekBar: '.jp-seek-bar',
-    playBar: '.jp-play-bar',
-    mute: '.jp-mute',
-    unmute: '.jp-unmute',
-    volumeBar: '.jp-volume-bar',
-    volumeBarValue: '.jp-volume-bar-value',
-    volumeMax: '.jp-volume-max',
-    playbackRateBar: '.jp-playback-rate-bar',
-    playbackRateBarValue: '.jp-playback-rate-bar-value',
-    currentTime: '.jp-current-time',
-    duration: '.jp-duration',
-    title: '.jp-title',
-    fullScreen: '.jp-full-screen',
-    restoreScreen: '.jp-restore-screen',
-    repeat: '.jp-repeat',
-    repeatOff: '.jp-repeat-off',
-    gui: '.jp-gui',
-    noSolution: '.jp-no-solution'
-   },
-   errorAlerts: false,
-   warningAlerts: false
-  });
- });
-</script> -->
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
 
@@ -51,23 +5,20 @@
   <ul class="collection">
     <% @playlist.episodes.each do |episode| %>
       <li class="collection-item avatar">
-        <div class="episode">
-          <% if episode_info(episode).image_files.to_a.empty? == false  %>
-            <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
-          <% else %>
-            <i class="material-icons circle red">radio</i>
-          <% end %>
-          <span class="title"><%= episode_info(episode).title %></span>
-          <p><%= link_to "#{episode_info(episode).show_title}",
-                 show_path(episode_info(episode).show_id) %><br>
-             <%= episode_info(episode).description %><br>
-             <%= episode_info(episode).audio_files %></p>
-          <div id="jquery_jplayer_1"></div>
-          <div id="jp_container_1">
-            <a href="#" class="jp-play">Play</a>
-            <a href="#" class="jp-pause">Pause</a>
-          </div>
-        </div>
+        <% if episode_info(episode).image_files.to_a.empty? == false  %>
+          <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
+        <% else %>
+          <i class="material-icons circle red">radio</i>
+        <% end %>
+        <span class="title"><%= episode_info(episode).title %></span>
+        <span class="audio-duration"><%= Time.at(episode_info(episode).audio_files.first.duration).utc.strftime("%H:%M:%S") %></span>
+        <p><%= link_to "#{episode_info(episode).show_title}",
+               show_path(episode_info(episode).show_id) %><br>
+           <%= episode_info(episode).description %></p>
+        <%= render 'music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
+                                            ogg: episode_info(episode).audio_files.first[1],
+                                            title: episode_info(episode).title,
+                                            id: episode_info(episode).id}  %>
       </li>
     <% end %>
   </ul>
