@@ -8,7 +8,7 @@
         <% @episodes.each do |episode| %>
           <li>
             <div class="collapsible-header">
-              <div class="row">
+              <div class="row" id="row-head">
                 <div class="col m1">
                   <% if episode.image_urls.to_a.empty? == false  %>
                     <img src="<%= episode.image_urls.thumb %>", alt="", id="episode-photo">
@@ -46,3 +46,13 @@
     </div>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+  $('#add-to-playlist').unbind();
+  $('.modal-trigger').leanModal();
+});
+</script>
