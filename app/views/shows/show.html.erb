@@ -1,0 +1,106 @@
+
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+
+  <!-- main info card -->
+  <div class="row">
+    <div class="col m10 offset-m1">
+      <div class="card">
+        <div class="card-content row">
+          <div class="col m4">
+            <%= image_tag "#{@show.image_files.first.url.full}", id: "show-image-main" %>
+          </div>
+          <div class="col m8">
+            <div id="show-title"><%= @show.title %></div>
+            <div><%= @show.description %></div>
+            <div><h6>Number of episodes: <%= @show.number_of_episodes %></h6></div>
+            <% if @show.web_profiles.to_a.empty? == false %>
+              <div><%= link_to "Facebook", @show.web_profiles.facebook.url %>
+                   <%= link_to "Twitter", @show.web_profiles.twitter.url %></div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- related shows -->
+  <div class= "row">
+    <% @related.each do |related| %>
+      <div class="col m2">
+        <div class="card" id="related-cards">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag "#{related.image_files.first.original_file_url}", class: "activator" %>
+          </div>
+          <!-- <div class="card-content">
+            <span class="card-title activator text-darken-4 related-card-title>">
+                  <%= related.title %><i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title text-darken-4>"><%= related.title %>
+                  <i class="material-icons right">close</i></span>
+            <p><%= related.network %>
+               <%= related.categories.first.name %>
+               <%= related.description %></p>
+          </div> -->
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- episode list -->
+  <div class="row">
+    <div class="col m10 offset-m1" id="collapsed-list">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <% @show.episode_ids.first(5).each do |episode| %>
+          <li>
+            <div class="collapsible-header">
+              <div class="row">
+                <div class="col m2">
+                  <% if episode_info(episode).image_files.to_a.empty? == false  %>
+                    <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
+                  <% else %>
+                    <i class="material-icons circle red">radio</i>
+                  <% end %>
+                </div>
+                <div class="col m9">
+                  <span class="show-title"><%= episode_info(episode).title %></span>
+                </div>
+                <div class="col m1">
+                  <div id="add-to-playlist">
+                    <a class="modal-trigger" href="#modal-<%= episode_info(episode).id %>">
+                        <i class="material-icons">playlist_add</i></a>
+                    <%= render partial: "layouts/add_to_playlist_modal",
+                               locals: {episode: episode_info(episode)} %>
+                  </div>
+
+                  <!-- <i class="material-icons">add</i> -->
+                </div>
+              </div>
+            </div>
+            <div class="collapsible-body">
+              <p><%= episode_info(episode).description %></p>
+
+              <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
+                                                  ogg: episode_info(episode).audio_files.first[1],
+                                                  title: episode_info(episode).title,
+                                                  id: episode_info(episode).id}  %>
+
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+
+   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
+});
+</script>

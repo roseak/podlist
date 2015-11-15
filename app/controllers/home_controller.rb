@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
   def index
-    @pod_details = OauthAudiosearch.new.episode(5678)
+    @episodes = episodes(params[:search])
+    
+  end
+
+  private
+
+  def episodes(query)
+    OauthAudiosearch.new.search({q: query}, 'episodes')
   end
 end

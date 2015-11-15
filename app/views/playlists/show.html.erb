@@ -1,0 +1,34 @@
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+
+  <div id="playlist-name"><%= @playlist.name %></div>
+  <ul class="collection">
+    <% @playlist.episodes.each do |episode| %>
+      <li class="collection-item avatar">
+        <% if episode_info(episode).image_files.to_a.empty? == false  %>
+          <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
+        <% else %>
+          <i class="material-icons circle red">radio</i>
+        <% end %>
+        <span class="title"><%= episode_info(episode).title %></span>
+        <span class="audio-duration"><%= Time.at(episode_info(episode).audio_files.first.duration).utc.strftime("%H:%M:%S") %></span>
+        <p><%= link_to "#{episode_info(episode).show_title}",
+               show_path(episode_info(episode).show_id) %><br>
+           <%= episode_info(episode).description %></p>
+        <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
+                                            ogg: episode_info(episode).audio_files.first[1],
+                                            title: episode_info(episode).title,
+                                            id: episode_info(episode).id}  %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="delete-playlist">
+    <%= link_to "Delete Playlist", "/playlists/#{@playlist.id}",
+        data: {confirm: "Playlist will be removed.  Are you sure?"},
+        method: :delete,
+        class: "btn btn-default",
+        id: "delete-#{@playlist.id}" %>
+  </div>
+</div>
+
+Microphone by John Caserta from the Noun Project

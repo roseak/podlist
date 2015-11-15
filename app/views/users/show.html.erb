@@ -1,0 +1,32 @@
+<%= render 'layouts/navbar' %>
+<div class="container" id="home-page">
+  <div class="row">
+    <div class="col m10 offset-m1">
+      <div class="card">
+        <div class="card-content row">
+          <div class="col m4">
+            <%= image_tag "#{@user.profile_pic.gsub("_normal", "")}", id: "user-image" %>
+          </div>
+          <div class="col m8">
+            <h4><%= @user.name %></h4>
+            <div><%= @user.bio %></div>
+            <div><%= @user.location %></div>
+            <div><%= link_to "@#{@user.screen_name}", "https://twitter.com/#{@user.screen_name}" %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% @user.playlists.each do |playlist| %>
+      <div class="col m4">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><h4><%= link_to "#{playlist.name}", playlist_path(playlist) %></h4></span>
+            <h6>Episodes: <%= playlist.episodes.size %></h6>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
