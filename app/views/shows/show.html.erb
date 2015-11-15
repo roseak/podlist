@@ -55,17 +55,37 @@
         <% @show.episode_ids.first(5).each do |episode| %>
           <li>
             <div class="collapsible-header">
-              <% if episode_info(episode).image_files.to_a.empty? == false  %>
-                <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
-              <% else %>
-                <i class="material-icons circle red">radio</i>
-              <% end %>
-              <span class="title"><%= episode_info(episode).title %></span>
-              <div id="add-to-playlist"><i class="material-icons">playlist_add</i>
+              <div class="row">
+                <div class="col m2">
+                  <% if episode_info(episode).image_files.to_a.empty? == false  %>
+                    <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
+                  <% else %>
+                    <i class="material-icons circle red">radio</i>
+                  <% end %>
+                </div>
+                <div class="col m9">
+                  <span class="show-title"><%= episode_info(episode).title %></span>
+                </div>
+                <div class="col m1">
+                  <div id="add-to-playlist">
+                    <a class="modal-trigger" href="#modal-<%= episode_info(episode).id %>">
+                        <i class="material-icons">playlist_add</i></a>
+                    <%= render partial: "layouts/add_to_playlist_modal",
+                               locals: {episode: episode_info(episode)} %>
+                  </div>
+
+                  <!-- <i class="material-icons">add</i> -->
+                </div>
+              </div>
             </div>
             <div class="collapsible-body">
-              <p><%= episode_info(episode).description %><br>
-               <%= episode_info(episode).audio_files %></p>
+              <p><%= episode_info(episode).description %></p>
+
+              <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
+                                                  ogg: episode_info(episode).audio_files.first[1],
+                                                  title: episode_info(episode).title,
+                                                  id: episode_info(episode).id}  %>
+
             </div>
           </li>
         <% end %>
@@ -79,5 +99,8 @@ $(document).ready(function(){
   $('.collapsible').collapsible({
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
+
+   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+  $('.modal-trigger').leanModal();
 });
 </script>

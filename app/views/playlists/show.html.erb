@@ -15,7 +15,7 @@
         <p><%= link_to "#{episode_info(episode).show_title}",
                show_path(episode_info(episode).show_id) %><br>
            <%= episode_info(episode).description %></p>
-        <%= render 'music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
+        <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
                                             ogg: episode_info(episode).audio_files.first[1],
                                             title: episode_info(episode).title,
                                             id: episode_info(episode).id}  %>
