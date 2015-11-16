@@ -19,7 +19,11 @@
                 <div class="col m10">
                   <div class="show-title truncate"><%= episode.title %></div>
                   <div id="show-network"><%= link_to "#{episode.show_title}",
-                       show_path(episode.show_id) %> from <%= episode.network %></div>
+                       show_path(episode.show_id) %>
+                       <% if episode.network %>
+                         <%= "from #{episode.network}" %>
+                       <% end %>
+                  </div>
                   <div id="episode-timing"><%= episode.date_created %> |
                        <%= Time.at(episode.duration).utc.strftime("%H:%M:%S") %></div>
                 </div>
