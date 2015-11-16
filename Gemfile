@@ -16,6 +16,7 @@ gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
 
 group :development, :test do
+  gem 'capybara'
   gem 'pry'
 end
 
