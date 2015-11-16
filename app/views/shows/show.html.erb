@@ -30,19 +30,8 @@
       <div class="col m2">
         <div class="card" id="related-cards">
           <div class="card-image waves-effect waves-block waves-light">
-            <%= image_tag "#{related.image_files.first.original_file_url}", class: "activator" %>
+            <%= link_to image_tag("#{related.image_files.first.original_file_url}"), show_path(related.id), class: "activator" %>
           </div>
-          <!-- <div class="card-content">
-            <span class="card-title activator text-darken-4 related-card-title>">
-                  <%= related.title %><i class="material-icons right">more_vert</i></span>
-          </div>
-          <div class="card-reveal">
-            <span class="card-title text-darken-4>"><%= related.title %>
-                  <i class="material-icons right">close</i></span>
-            <p><%= related.network %>
-               <%= related.categories.first.name %>
-               <%= related.description %></p>
-          </div> -->
         </div>
       </div>
     <% end %>
@@ -55,12 +44,12 @@
         <% @show.episode_ids.first(5).each do |episode| %>
           <li>
             <div class="collapsible-header">
-              <div class="row">
+              <div class="row" id="row-head-show">
                 <div class="col m1">
                   <% if episode_info(episode).image_files.to_a.empty? == false  %>
                     <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", id="episode-photo">
                   <% else %>
-                    <i class="material-icons red">radio</i>
+                    <i class="material-icons red" id="episode-photo">radio</i>
                   <% end %>
                 </div>
                 <div class="col m10">
@@ -93,6 +82,8 @@
     </div>
   </div>
 </div>
+
+<div id="credit">Microphone by John Caserta from the Noun Project</div>
 
 <script>
 $(document).ready(function(){
