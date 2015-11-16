@@ -5,6 +5,7 @@ $(document).ready(function(){
 function fetchEpisodesButton() {
   $('#button-fetch').on('click', function(){
     var query = $('#search-query').val()
+    $('#episode-search-results').empty()
     fetchEpisodes(query)
   })
 }
@@ -26,9 +27,9 @@ function fetchEpisodes(query){
     type: 'GET',
     url: '/episodes/search?query=' + query,
     success: function(episodes){
-      $.each(episodes, function(index, episode){
-        if (isNaN(newestEpisodeID) || episode.results.id > newestEpisodeID) {
-          renderEpisodes(episode.results)
+      $.each(episodes.results, function(index, episode){
+        if (isNaN(newestEpisodeID) || episode.id > newestEpisodeID) {
+          renderEpisodes(episode)
         }
       })
     }

@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
+  respond_to :json
+
   def index
     @episodes = episodes(params["query"]).to_json
-    render :json
+    respond_with @episodes
   end
 
   private

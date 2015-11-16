@@ -14,6 +14,7 @@ gem 'audiosearch', '~> 1.0.1'
 gem 'omniauth-twitter'
 gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
+gem 'responders', '~> 2.0'
 
 group :development, :test do
   gem 'pry'
