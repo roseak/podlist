@@ -1,5 +1,6 @@
 $(document).ready(function(){
   fetchEpisodesButton()
+  fetchEpisodesEnter()
 })
 
 function fetchEpisodesButton() {
@@ -7,6 +8,14 @@ function fetchEpisodesButton() {
     var query = $('#search-query').val()
     $('#episode-search-results').empty()
     fetchEpisodes(query)
+  })
+}
+
+function fetchEpisodesEnter() {
+  $('#search-query').keyup(function(event){
+    if(event.keyCode == 13){
+      $('#button-fetch').click()
+    }
   })
 }
 
