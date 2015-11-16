@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :playlists
   resources :users, only: [:index, :show]
   resources :shows, only: [:show]
-  get '/episodes/search', as: :search, to: 'search#index'
+  get '/episodes/search', to: 'search#index'
 end
