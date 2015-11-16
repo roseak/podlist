@@ -2,26 +2,46 @@
 <div class="container" id="home-page">
 
   <div id="playlist-name"><%= @playlist.name %></div>
-  <ul class="collection">
-    <% @playlist.episodes.each do |episode| %>
-      <li class="collection-item avatar">
-        <% if episode_info(episode).image_files.to_a.empty? == false  %>
-          <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", class="circle", id="episode-photo">
-        <% else %>
-          <i class="material-icons circle red">radio</i>
+  <div class="row">
+    <div class="col m10 offset-m1" id="collapsed-list">
+      <ul class="collapsible popout hoverable" data-collapsible="accordion">
+        <% @playlist.episodes.each do |episode| %>
+          <li>
+            <div class="collapsible-header">
+              <div class="row" id="row-head">
+                <div class="col m1">
+                  <% if episode_info(episode).image_files.to_a.empty? == false  %>
+                    <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", id="episode-photo">
+                  <% else %>
+                    <i class="material-icons red" id="episode-photo">radio</i>
+                  <% end %>
+                </div>
+                <div class="col m11">
+                  <div class="show-title truncate"><%= episode_info(episode).title %></div>
+                  <div id="show-network"><%= link_to "#{episode_info(episode).show_title}",
+                            show_path(episode_info(episode).show_id) %>
+                            <% if episode_info(episode).network %>
+                              <%= "from #{episode_info(episode).network}" %>
+                            <% end %>
+                  </div>
+                  <div id="episode-timing"><%= episode_info(episode).date_created %> |
+                     <%= Time.at(episode_info(episode).duration).utc.strftime("%H:%M:%S") %></div>
+                </div>
+              </div>
+            </div>
+            <div class="collapsible-body">
+              <p><%= episode_info(episode).description %></p>
+              <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
+                                                  ogg: episode_info(episode).audio_files.first[1],
+                                                  title: episode_info(episode).title,
+                                                  id: episode_info(episode).id}  %>
+            </div>
+          </li>
         <% end %>
-        <span class="title"><%= episode_info(episode).title %></span>
-        <span class="audio-duration"><%= Time.at(episode_info(episode).duration).utc.strftime("%H:%M:%S") %></span>
-        <p><%= link_to "#{episode_info(episode).show_title}",
-               show_path(episode_info(episode).show_id) %><br>
-           <%= episode_info(episode).description %></p>
-        <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
-                                            ogg: episode_info(episode).audio_files.first[1],
-                                            title: episode_info(episode).title,
-                                            id: episode_info(episode).id}  %>
-      </li>
-    <% end %>
-  </ul>
+      </ul>
+    </div>
+  </div>
+
   <div class="delete-playlist">
     <%= link_to "Delete Playlist", "/playlists/#{@playlist.id}",
         data: {confirm: "Playlist will be removed.  Are you sure?"},
@@ -30,3 +50,11 @@
         id: "delete-#{@playlist.id}" %>
   </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+});
+</script>

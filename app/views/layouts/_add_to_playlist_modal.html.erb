@@ -2,7 +2,7 @@
 
   <div class="modal-content">
     <div id="add-to-playlist-title">Add to a Playlist</div>
-    <div id="episode-title-modal"><%= episode.title %></div>
+    <div id="episode-title-modal truncate"><%= episode.title %></div>
     <div class="col m8 offset-m2 new-playlists">
       <% current_user.playlists.each do |playlist| %>
         <div><%= link_to "#{playlist.name}", playlist_path(playlist,
