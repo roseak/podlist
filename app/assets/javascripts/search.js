@@ -36,15 +36,17 @@ function renderEpisodes(episode, current_user) {
     + "</div></div><div class='col m1'>"
     + "<div id='add-to-playlist'><a class='modal-trigger' href='#modal-"
     + episode.id
-    + "'><i class='material-icons'>playlist_add</i></a><div id='modal-'"
+    + "'><i class='material-icons'>playlist_add</i></a><div id='modal-"
     + episode.id
     + "' class='modal'><div class='modal-content'>"
     + "<div id='add-to-playlist-title'>Add to a Playlist</div>"
     + "<div id='episode-title-modal' class='truncate'>"
     + episode.title
     + "</div><div class='col m8 offset-m2 new-playlists'>"
-    + userPlaylists(current_user.playlists)
-    + "<form action='/playlists' id='new-playlists' method='post'>"
+    + "<form action='/playlists' id='update-playlist' method='put'>"
+    + "<div class='input-field col m10' id='playlist-name-all-btns'>"
+    + userPlaylists(current_user.playlists, episode.id)
+    + "</div></form><form action='/playlists' id='new-playlists' method='post'>"
     + "<div class='input-field col m12' id='new-playlist-name'>"
     + "<input id='name' name='name' type='text' />"
     + "<label for='name'>Playlist Name</label>"
@@ -57,14 +59,16 @@ function renderEpisodes(episode, current_user) {
   )
 }
 
-function userPlaylists(playlists){
+function userPlaylists(playlists, episode_id){
   $.each(playlists, function(index, playlist){
-    "<div><a href='/playlists/"
+    return "<div><input id='episode_id' name='episode_id' type='hidden' value='"
+    + episode_id
+    + "' /><input id='playlist_name' name='id' type='hidden' value='"
     + playlist.id
-    +"' class='waves-effect waves-light btn col m10 offset-m1 playlist-name-btn'"
-    + "data-method='put'>"
+    + "' /><input type='submit' value='"
     + playlist.name
-    + "</a></div>"
+    + "' class='waves-effect waves-light btn col m10 offset-m1 playlist-name-btn'>"
+    + "</div>"
   })
 }
 
@@ -89,8 +93,8 @@ function fetchEpisodes(query){
         if (isNaN(newestEpisodeID) || episode.id > newestEpisodeID) {
           renderEpisodes(episode, current_user)
         }
-        attachCollapsible()
         attachModal()
+        attachCollapsible()
       })
     }
   })
