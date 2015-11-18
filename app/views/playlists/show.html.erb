@@ -8,7 +8,7 @@
         <% @episodes.each do |episode| %>
           <li>
             <div class="collapsible-header">
-              <div class="row" id="row-head">
+              <div class="row" id="row-head-show">
                 <div class="col m1">
                   <% if episode.image_files.to_a.empty? == false  %>
                     <img src="<%= episode.image_files.first.url.thumb %>", alt="", id="episode-photo">

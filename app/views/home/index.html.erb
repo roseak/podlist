@@ -1,15 +1,23 @@
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
 
-  <div class="row">
-    <div class="col s8 offset-2">
-      <hr>
-      <div class="form-group">
-        <input class="form-control" type="text" id="search-query">
-      </div>
-      <input class="btn btn-default pull-right" id="button-fetch" type="button" name="submit" value="Search">
+  <!-- <div class="row"> -->
+    <!-- <div class="col s8 offset-2" id="total-search-box"> -->
+      <!-- <hr> -->
+  <nav>
+    <div class="nav-wrapper" id="nav-border">
+      <form>
+      <!-- <div class="form-group" id="search-box"> -->
+        <div class="input-field">
+          <input type="search" id="search" class="form-group">
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+          <input class="btn btn-default pull-right" id="button-fetch" type="button" name="submit" value="Search">
+        </div>
+      </form>
     </div>
-  </div>
+  </nav>
+  <!-- </div> -->
 
   <div class="row">
     <div class="col m10 offset-m1" id="collapsed-list">

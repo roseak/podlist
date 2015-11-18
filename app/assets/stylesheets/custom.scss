@@ -179,6 +179,10 @@ body {
   margin-top: 15px;
 }
 
+.collapsible-header i {
+  margin-bottom: 15px;
+}
+
 .related-card-title {
   font-size: 12px;
 }
@@ -210,10 +214,29 @@ body {
   margin-bottom: 20px;
 }
 
-.playlist-name-btn {
-  margin-bottom: 10px;
-}
-
 #new-playlist-name {
   margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+#name-search {
+  height: 3rem;
+}
+
+#update-playlist {
+  text-align: center;
+  line-height: 3rem;
+}
+
+#search-box {
+  text-align: center;
+}
+
+#search-query {
+  text-align: center;
+}
+
+.nav-wrapper #nav-border {
+  border: 40px;
+  // border-bottom: 10px;
 }

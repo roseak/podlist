@@ -12,7 +12,7 @@ function fetchEpisodesButton() {
 }
 
 function fetchEpisodesEnter() {
-  $('#search-query').keyup(function(event){
+  $('#search').keyup(function(event){
     if(event.keyCode == 13){
       $('#button-fetch').click()
     }
@@ -28,7 +28,12 @@ function renderEpisodes(episode, current_user) {
     + "</div><div class='col m10'><div class='show-title truncate'>"
     + episode.title
     + "</div><div id='show-network'>"
+    + "<a href='/shows/"
+    + episode.show_id
+    + "'>"
     + episode.show_title
+    + "</a>"
+    + showNetwork(episode)
     + "</div><div id='episode-timing'>"
     + episode.date_created
     + " | "
@@ -44,7 +49,7 @@ function renderEpisodes(episode, current_user) {
     + episode.title
     + "</div><div class='col m8 offset-m2 new-playlists'>"
     + userPlaylists(current_user.playlists, episode.id)
-    + "<form action='/playlists' id='new-playlists' method='post'>"
+    + "<form action='/playlists' id='new-playlist' method='post'>"
     + "<div class='input-field col m12' id='new-playlist-name'>"
     + "<input id='name' name='name' type='text' />"
     + "<label for='name'>Playlist Name</label>"
@@ -69,7 +74,7 @@ function playlistButtons(playlist, episode_id){
   return "<form action='/playlists/"
   + playlist.id
   + "' id='update-playlist' method='post'>"
-  + "<div class='input-field col m10' id='playlist-name-all-btns'>"
+  + "<div class='input-field col m10 offset-m1' id='playlist-name-btn'>"
   + "<div><input name='_method' type='hidden' value='patch' />"
   + "<input id='episode_id' name='episode_id' type='hidden' value='"
   + episode_id
@@ -77,8 +82,15 @@ function playlistButtons(playlist, episode_id){
   + playlist.id
   + "' /><input type='submit' value='"
   + playlist.name
-  + "' class='waves-effect waves-light btn col m10 offset-m1 playlist-name-btn'>"
+  + "' class='waves-effect waves-light btn playlist-name-btn'>"
   + "</div></div></form>"
+}
+
+function showNetwork(episode){
+  if (!!episode.network) {
+    return " from "
+    + episode.network
+  }
 }
 
 function episodeImages(episode){
