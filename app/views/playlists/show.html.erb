@@ -31,10 +31,12 @@
             </div>
             <div class="collapsible-body">
               <p><%= episode.description %></p>
-              <%= render 'layouts/music_player', locals: {mp3: episode.audio_files.first.url[0],
-                                                  ogg: episode.audio_files.first[1],
-                                                  title: episode.title,
-                                                  id: episode.id}  %>
+              <% if episode.audio_files.to_a.empty? == false %>
+                <%= render 'layouts/music_player', locals: {mp3: episode.audio_files.first.url[0],
+                                                    ogg: episode.audio_files.first[1],
+                                                    title: episode.title,
+                                                    id: episode.id}  %>
+              <% end %>
             </div>
           </li>
         <% end %>
