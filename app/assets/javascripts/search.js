@@ -37,7 +37,7 @@ function renderEpisodes(episode, current_user) {
     + "</div><div id='episode-timing'>"
     + episode.date_created
     + " | "
-    + episode.duration
+    + formatTime(episode.duration, true)
     + "</div></div><div class='col m1'>"
     + "<div id='add-to-playlist'><a class='modal-trigger' href='#modal-"
     + episode.id
@@ -100,6 +100,33 @@ function episodeImages(episode){
     return "<i class='material-icons red' id='episode-photo'>radio</i>"
   }
 }
+
+function formatTime(nbSeconds, hasHours) {
+  var time = [],
+      s = 1;
+  var calc = nbSeconds;
+
+  if (hasHours) {
+      s = 3600;
+      calc = calc / s;
+      time.push(format(Math.floor(calc)));//hour
+  }
+
+  calc = ((calc - (time[time.length-1] || 0)) * s) / 60;
+  time.push(format(Math.floor(calc)));//minute
+
+  calc = (calc - (time[time.length-1])) * 60;
+  time.push(format(Math.round(calc)));//second
+
+
+  function format(n) {
+      return (("" + n) / 10).toFixed(1).replace(".", "");
+  }
+
+  //if (!hasHours) time.shift();//you can set only "min: sec"
+
+  return time.join(":");
+};
 
 function fetchEpisodes(query){
   var newestEpisodeID = parseInt($('.episode').last().attr('data-id'))
