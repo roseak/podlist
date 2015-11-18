@@ -62,7 +62,7 @@ function userPlaylists(playlists, episode_id){
   for (var i = 0; i < playlists.length; i++) {
     arranged_playlists.push(playlistButtons(playlists[i], episode_id));
   }
-  return arranged_playlists;
+  return arranged_playlists.join("");
 }
 
 function playlistButtons(playlist, episode_id){
