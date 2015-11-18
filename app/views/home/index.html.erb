@@ -1,10 +1,21 @@
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
-  <nav>
-    <div class="nav-wrapper">
-      <%= form_tag(search_path, method: "get") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search Episodes" %>
-      <% end %>
+
+  <div class="row">
+    <div class="col s8 offset-2">
+      <hr>
+      <div class="form-group">
+        <input class="form-control" type="text" id="search-query">
+      </div>
+      <input class="btn btn-default pull-right" id="button-fetch" type="button" name="submit" value="Search">
     </div>
-  </nav>
+  </div>
+
+  <div class="row">
+    <div class="col m10 offset-m1" id="collapsed-list">
+      <ul class="collapsible popout hoverable" id="episode-search-results" data-collapsible="accordion">
+      </ul>
+    </div>
+  </div>
+
 </div>

@@ -1,12 +1,13 @@
 class SearchController < ApplicationController
+  respond_to :json
+
   def index
-    @search = params[:search]
-    @episodes = episodes(@search)
+    @episodes  = episodes(params["query"])
   end
 
   private
 
   def episodes(query)
-    OauthAudiosearch.new.search({q: query}, 'episodes').results
+    OauthAudiosearch.new.search({q: query}, 'episodes')
   end
 end

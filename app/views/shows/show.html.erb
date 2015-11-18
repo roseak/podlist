@@ -1,7 +1,6 @@
 
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
-
   <!-- main info card -->
   <div class="row">
     <div class="col m10 offset-m1">
@@ -14,9 +13,11 @@
             <div id="show-title"><%= @show.title %></div>
             <div><%= @show.description %></div>
             <div><h6>Number of episodes: <%= @show.number_of_episodes %></h6></div>
-            <% if @show.web_profiles.to_a.empty? == false %>
-              <div><%= link_to "Facebook", @show.web_profiles.facebook.url %>
-                   <%= link_to "Twitter", @show.web_profiles.twitter.url %></div>
+            <% if @show.web_profiles.facebook %>
+              <div><%= link_to "Facebook", @show.web_profiles.facebook.url %></div>
+            <% end %>
+            <% if @show.web_profiles.twitter %>
+              <div><%= link_to "Twitter", @show.web_profiles.twitter.url %></div>
             <% end %>
           </div>
         </div>

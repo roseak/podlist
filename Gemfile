@@ -14,8 +14,11 @@ gem 'audiosearch', '~> 1.0.1'
 gem 'omniauth-twitter'
 gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
+gem 'responders', '~> 2.0'
 gem 'launchy'
 gem 'hashie'
+gem 'redis-rails'
+gem "skylight"
 
 group :development, :test do
   gem 'capybara'
