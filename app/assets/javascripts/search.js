@@ -44,23 +44,25 @@ function renderEpisodes(episode, current_user) {
     + episode.title
     + "</div><div class='col m8 offset-m2 new-playlists'>"
     + userPlaylists(current_user.playlists, episode.id)
-    + "</div></form><form action='/playlists' id='new-playlists' method='post'>"
+    + "<form action='/playlists' id='new-playlists' method='post'>"
     + "<div class='input-field col m12' id='new-playlist-name'>"
     + "<input id='name' name='name' type='text' />"
     + "<label for='name'>Playlist Name</label>"
     + "<input id='episode_id' name='episode_id' type='hidden' value='"
     + episode.id
-    + "</div></div></div></div>"
-    + "</div></div></div><div class='collapsible-body'><p>"
+    + "' /></div></form></div></div></div>"
+    + "</div></div></div></div><div class='collapsible-body'><p>"
     + episode.description
     + "</p></div></li>"
   )
 }
 
 function userPlaylists(playlists, episode_id){
+  var arranged_playlists = [];
   for (var i = 0; i < playlists.length; i++) {
-     return playlistButtons(playlists[i], episode_id)
+    arranged_playlists.push(playlistButtons(playlists[i], episode_id));
   }
+  return arranged_playlists;
 }
 
 function playlistButtons(playlist, episode_id){
