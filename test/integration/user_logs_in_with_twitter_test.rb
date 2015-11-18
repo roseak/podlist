@@ -13,6 +13,7 @@ class UserLogsInWithTwitterTest < ActionDispatch::IntegrationTest
     assert_equal 200, page.status_code
 
     click_link "LOGIN"
+
     assert_equal "/home", current_path
     assert page.has_content?("Rosie")
     assert page.has_link?("Logout")
@@ -24,14 +25,17 @@ class UserLogsInWithTwitterTest < ActionDispatch::IntegrationTest
       provider: "twitter",
       extra: {
         raw_info: {
-          user_id: "1234",
+          uid: "1234",
           name: "Rosie",
           screen_name: "kohniva",
+          profile_image_url: "https://photo.com.jpg",
+          description: "words",
+          location: "Denver"
         }
       },
       credentials: {
-        token: "pizza",
-        secret: "secretpizza"
+        token: ENV["TWITTER_KEY"],
+        secret: ENV["TWITTER_SECRET"]
       }
     })
   end

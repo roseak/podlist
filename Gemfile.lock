@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     arel (6.0.3)
     audiosearch (1.0.1)
       excon
@@ -89,6 +90,8 @@ GEM
       railties (>= 3.2.16)
     json (1.8.3)
     jwt (1.5.2)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -199,9 +202,11 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.1.0)
   figaro
+  hashie
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  launchy
   omniauth-twitter
   pg
   pry
