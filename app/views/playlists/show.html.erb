@@ -5,36 +5,36 @@
   <div class="row">
     <div class="col m10 offset-m1" id="collapsed-list">
       <ul class="collapsible popout hoverable" data-collapsible="accordion">
-        <% @playlist.episodes.each do |episode| %>
+        <% @episodes.each do |episode| %>
           <li>
             <div class="collapsible-header">
               <div class="row" id="row-head">
                 <div class="col m1">
-                  <% if episode_info(episode).image_files.to_a.empty? == false  %>
-                    <img src="<%= episode_info(episode).image_files.first.url.thumb %>", alt="", id="episode-photo">
+                  <% if episode.image_files.to_a.empty? == false  %>
+                    <img src="<%= episode.image_files.first.url.thumb %>", alt="", id="episode-photo">
                   <% else %>
                     <i class="material-icons red" id="episode-photo">radio</i>
                   <% end %>
                 </div>
                 <div class="col m11">
-                  <div class="show-title truncate"><%= episode_info(episode).title %></div>
-                  <div id="show-network"><%= link_to "#{episode_info(episode).show_title}",
-                            show_path(episode_info(episode).show_id) %>
-                            <% if episode_info(episode).network %>
-                              <%= "from #{episode_info(episode).network}" %>
+                  <div class="show-title truncate"><%= episode.title %></div>
+                  <div id="show-network"><%= link_to "#{episode.show_title}",
+                            show_path(episode.show_id) %>
+                            <% if episode.network %>
+                              <%= "from #{episode.network}" %>
                             <% end %>
                   </div>
-                  <div id="episode-timing"><%= episode_info(episode).date_created %> |
-                     <%= Time.at(episode_info(episode).duration).utc.strftime("%H:%M:%S") %></div>
+                  <div id="episode-timing"><%= episode.date_created %> |
+                     <%= Time.at(episode.duration).utc.strftime("%H:%M:%S") %></div>
                 </div>
               </div>
             </div>
             <div class="collapsible-body">
-              <p><%= episode_info(episode).description %></p>
-              <%= render 'layouts/music_player', locals: {mp3: episode_info(episode).audio_files.first.url[0],
-                                                  ogg: episode_info(episode).audio_files.first[1],
-                                                  title: episode_info(episode).title,
-                                                  id: episode_info(episode).id}  %>
+              <p><%= episode.description %></p>
+              <%= render 'layouts/music_player', locals: {mp3: episode.audio_files.first.url[0],
+                                                  ogg: episode.audio_files.first[1],
+                                                  title: episode.title,
+                                                  id: episode.id}  %>
             </div>
           </li>
         <% end %>

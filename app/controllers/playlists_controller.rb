@@ -7,6 +7,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find_by(id: params[:id])
+    @episodes = @playlist.episodes.map { |episode| episode_info(episode) }
   end
 
   def new
