@@ -6,13 +6,14 @@ $(document).ready(function(){
 function fetchEpisodesButton() {
   $('#button-fetch').on('click', function(){
     var query = $('#search-query').val()
+    $('#best-shows').hide()
     $('#episode-search-results').empty()
     fetchEpisodes(query)
   })
 }
 
 function fetchEpisodesEnter() {
-  $('#search').keyup(function(event){
+  $('#search-box').keyup(function(event){
     if(event.keyCode == 13){
       $('#button-fetch').click()
     }

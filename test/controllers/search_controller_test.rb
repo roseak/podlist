@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PlaylistsControllerTest < ActionController::TestCase
+class SearchControllerTest < ActionController::TestCase
   test "stubs request using VCR for a user playlist" do
     user = User.create(uid: "2053151",
                        name: "Rosie Kohn",
@@ -12,10 +12,10 @@ class PlaylistsControllerTest < ActionController::TestCase
                        oauth_token_secret: ENV["SAMPLE_TOKEN_SECRET"])
     session[:user_id] = user.id
 
-    VCR.use_cassette("_first_playlist_data") do
-      get :show, id: 2
+    VCR.use_cassette("_red_search_data") do
+      get :index, q: "red"
       assert_response 200
-      assert_match /Resources/, response.body
+      assert_match /red/, response.body
     end
   end
 end

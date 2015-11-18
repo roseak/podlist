@@ -12,5 +12,10 @@
 !/log/.keep
 /tmp
 
+/coverage
+
 # Ignore application configuration
 /config/application.yml
+
+# Ignore all cassettes
+/test/fixtures/vcr_cassettes
