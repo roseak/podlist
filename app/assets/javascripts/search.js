@@ -43,8 +43,6 @@ function renderEpisodes(episode, current_user) {
     + "<div id='episode-title-modal' class='truncate'>"
     + episode.title
     + "</div><div class='col m8 offset-m2 new-playlists'>"
-    + "<form action='/playlists' id='update-playlist' method='put'>"
-    + "<div class='input-field col m10' id='playlist-name-all-btns'>"
     + userPlaylists(current_user.playlists, episode.id)
     + "</div></form><form action='/playlists' id='new-playlists' method='post'>"
     + "<div class='input-field col m12' id='new-playlist-name'>"
@@ -52,7 +50,7 @@ function renderEpisodes(episode, current_user) {
     + "<label for='name'>Playlist Name</label>"
     + "<input id='episode_id' name='episode_id' type='hidden' value='"
     + episode.id
-    + "' /></div></form></div></div></div></div>"
+    + "</div></div></div></div>"
     + "</div></div></div><div class='collapsible-body'><p>"
     + episode.description
     + "</p></div></li>"
@@ -60,16 +58,25 @@ function renderEpisodes(episode, current_user) {
 }
 
 function userPlaylists(playlists, episode_id){
-  $.each(playlists, function(index, playlist){
-    return "<div><input id='episode_id' name='episode_id' type='hidden' value='"
-    + episode_id
-    + "' /><input id='playlist_name' name='id' type='hidden' value='"
-    + playlist.id
-    + "' /><input type='submit' value='"
-    + playlist.name
-    + "' class='waves-effect waves-light btn col m10 offset-m1 playlist-name-btn'>"
-    + "</div>"
-  })
+  for (var i = 0; i < playlists.length; i++) {
+     return playlistButtons(playlists[i], episode_id)
+  }
+}
+
+function playlistButtons(playlist, episode_id){
+  return "<form action='/playlists/"
+  + playlist.id
+  + "' id='update-playlist' method='post'>"
+  + "<div class='input-field col m10' id='playlist-name-all-btns'>"
+  + "<div><input name='_method' type='hidden' value='patch' />"
+  + "<input id='episode_id' name='episode_id' type='hidden' value='"
+  + episode_id
+  + "' /><input id='playlist_name' name='id' type='hidden' value='"
+  + playlist.id
+  + "' /><input type='submit' value='"
+  + playlist.name
+  + "' class='waves-effect waves-light btn col m10 offset-m1 playlist-name-btn'>"
+  + "</div></div></form>"
 }
 
 function episodeImages(episode){
