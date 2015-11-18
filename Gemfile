@@ -14,8 +14,11 @@ gem 'audiosearch', '~> 1.0.1'
 gem 'omniauth-twitter'
 gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
+gem 'launchy'
+gem 'hashie'
 
 group :development, :test do
+  gem 'capybara'
   gem 'pry'
 end
 

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @episodes = episodes(params[:search])
+    @episodes = episodes(params[:search]) if params[:search].present?
   end
 
   private
