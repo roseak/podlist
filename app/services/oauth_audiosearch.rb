@@ -9,7 +9,8 @@ class OauthAudiosearch
         id: ENV['AS_ID'].dup,
         secret: ENV['AS_SECRET'].dup,
         host: ENV['AS_HOST'].dup,
-        debug: false)
+        debug: false
+        )
     end
   end
 
