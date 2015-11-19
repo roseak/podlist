@@ -7,7 +7,15 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find_by(id: params[:id])
-    @episodes = @playlist.episodes.map { |episode| episode_info(episode) }
+
+    if Rails.cache.read("playlist:#{params[:id]}-#{@playlist.updated_at}")
+      @playlist = Rails.cache.read("playlist:#{params[:id]}-#{@playlist.updated_at}")
+      @episodes = Rails.cache.read("playlist:#{params[:id]}-#{@playlist.updated_at}-episodes")
+    else
+      Rails.cache.write("playlist:#{params[:id]}-#{@playlist.updated_at}", @playlist)
+      @episodes = @playlist.episodes.map { |episode| episode_info(episode) }
+      Rails.cache.write("playlist:#{params[:id]}-#{@playlist.updated_at}-episodes", @episodes)
+    end
   end
 
   def new
