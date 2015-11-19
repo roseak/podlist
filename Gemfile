@@ -34,4 +34,6 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'simplecov'
+  gem 'selenium-webdriver'
+  gem 'mocha'
 end

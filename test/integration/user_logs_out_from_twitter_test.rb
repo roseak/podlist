@@ -4,6 +4,7 @@ class UserLogsOutWithTwitterTest < ActionDispatch::IntegrationTest
   def setup
     Capybara.app = Podlist::Application
     stub_omniauth
+    Capybara.current_driver = Capybara.javascript_driver # :selenium by default
   end
 
   test "logging out" do

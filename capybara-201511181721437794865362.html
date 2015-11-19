@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Podlist</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Unica+One" />
+  <link href="/assets/application.css" media="all" rel="stylesheet" />
+  <script src="/assets/application.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
+</head>
+<body>
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <img alt="Micophone" src="/assets/micophone.svg" id="microphone-nav" />
+      <a href="/home" id="nav-logo" class="brand-logo">PodList</a>
+      <ul class="right" id="nav-mobile">
+        <li><a href="/playlists">Playlists</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/users/980191012">Rosie</a></li>
+        <li><a href="/logout" data-method="delete" rel="nofollow">Logout</a>
+      </li></ul>
+    </div>
+  </nav>
+</div>
+
+<div id="home-page" class="container">
+
+<div id="best-shows">
+  <div class="row card-lines">
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/355" class="activator"><img alt="Ted" src="/assets/ted.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/13" class="activator"><img alt="Radio lab" src="/assets/radio-lab.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/42" class="activator"><img alt="Reply all" src="/assets/reply-all.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/15" class="activator"><img alt="Serial" src="/assets/serial.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/27" class="activator"><img alt="This american" src="/assets/this-american.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/353" class="activator"><img alt="Freakonomics" src="/assets/freakonomics.jpg" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row card-lines">
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/22" class="activator"><img alt="Startup" src="/assets/startup.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/58" class="activator"><img alt="Moth" src="/assets/moth.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/359" class="activator"><img alt="Invisibilia" src="/assets/invisibilia.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/339" class="activator"><img alt="Onbeing" src="/assets/onbeing.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/50" class="activator"><img alt="Kcrw" src="/assets/kcrw.jpg" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="col m2">
+    <div class="card">
+      <div class="card-image waves-effect waves-block waves-light front-card">
+        <a href="/shows/385" class="activator"><img alt="Deathsex" src="/assets/deathsex.jpg" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div id="home-welcome" class="col m8 offset-m2">Welcome to Podlist!</div>
+    <div id="instructions" class="col m6 offset-m3">Search through our database
+       to find a podcast episode that interests you and start a playlist.</div>
+  </div>
+</div>
+  <!-- <div class="row">
+    <form>
+      <div class="form-group" id="search-box">
+        <div class="input-field">
+          <input type="search" id="search-box" class="form-group">
+          <label for="search-box"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+          <input class="btn btn-default pull-right" id="button-fetch" type="button" name="submit" value="Search">
+        </div>
+      </div>
+    </form>
+  </div> -->
+<div class="row">
+<div class="col m8 offset-m2">
+  <hr />
+  <div class="form-group">
+    <input type="text" id="search-query" class="form-control" />
+  </div>
+  <input type="button" value="Search" name="submit" id="button-fetch" class="btn btn-default pull-right" />
+</div>
+</div>
+
+  <div class="row">
+    <div id="collapsed-list" class="col m10 offset-m1">
+      <ul data-collapsible="accordion" id="episode-search-results" class="collapsible popout hoverable">
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</body></html>
