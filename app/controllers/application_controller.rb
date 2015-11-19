@@ -9,8 +9,4 @@ class ApplicationController < ActionController::Base
   def episode_info(episode_number)
     OauthAudiosearch.new.episode(episode_number)
   end
-
-  def current_user_playlist?(playlist_id)
-    current_user.playlists.find_by(id: playlist_id)
-  end
 end
