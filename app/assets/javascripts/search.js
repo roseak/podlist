@@ -13,7 +13,7 @@ function fetchEpisodesButton() {
 }
 
 function fetchEpisodesEnter() {
-  $('#search-box').keyup(function(event){
+  $('#search-query').keyup(function(event){
     if(event.keyCode == 13){
       $('#button-fetch').click()
     }
@@ -75,7 +75,7 @@ function playlistButtons(playlist, episode_id){
   return "<form action='/playlists/"
   + playlist.id
   + "' id='update-playlist' method='post'>"
-  + "<div class='input-field col m10 offset-m1' id='playlist-name-btn'>"
+  + "<div class='input-field col m10 offset-m1 button-add' id='playlist-name-btn'>"
   + "<div><input name='_method' type='hidden' value='patch' />"
   + "<input id='episode_id' name='episode_id' type='hidden' value='"
   + episode_id
@@ -130,6 +130,7 @@ function formatTime(nbSeconds, hasHours) {
 };
 
 function fetchEpisodes(query){
+
   var newestEpisodeID = parseInt($('.episode').last().attr('data-id'))
   $.ajax({
     type: 'GET',

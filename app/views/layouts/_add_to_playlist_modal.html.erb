@@ -5,7 +5,7 @@
     <div id="episode-title-modal" class="truncate"><%= episode.title %></div>
     <div class="col m8 offset-m2 new-playlists">
       <% current_user.playlists.each do |playlist| %>
-        <div><%= link_to "#{playlist.name}", playlist_path(playlist,
+        <div class="button-add"><%= link_to "#{playlist.name}", playlist_path(playlist,
                  {episode_id: episode.id}), method: :put,
                   class: "waves-effect waves-light btn col m10 offset-m1 playlist-name-btn" %></div>
       <% end %>
