@@ -30,7 +30,13 @@
       <div class="col m2">
         <div class="card" id="related-cards">
           <div class="card-image waves-effect waves-block waves-light">
-            <%= link_to image_tag("#{related.image_files.first.original_file_url}"), show_path(related.id), class: "activator" %>
+            <% if related.image_files.to_a.empty? == false %>
+              <%= link_to image_tag("#{related.image_files.first.original_file_url}"),
+                  show_path(related.id), class: "activator" %>
+            <% else %>
+              <a href="<%= show_path(related.id) %>" class="activator">
+                 <i class="material-icons red large icon-large">radio</i></a>
+            <% end %>
           </div>
         </div>
       </div>
