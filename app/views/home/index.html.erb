@@ -1,26 +1,8 @@
 <%= render 'layouts/navbar' %>
 <div class="container" id="home-page">
-
-<div id="best-shows">
-  <%= react_component('HomeShows', shows: @home_shows) %>
-  <div class="row">
-    <div class="col m8 offset-m2" id="home-welcome">Welcome to Podlist!</div>
-    <div class="col m6 offset-m3" id="instructions">Search through our database
-       to find a podcast episode that interests you and start a playlist.</div>
+  <div id="best-shows">
+    <%= react_component('HomeShows', shows: @home_shows) %>
   </div>
-</div>
-
-<div class="row">
-  <div class="col m10 offset-m2" id="search-form">
-    <div class="form-group col m9" id="search-box">
-      <input class="form-control" type="search" id="search-query">
-      <label for="search-query">What interests you?</label>
-    </div>
-    <div class="col m2">
-      <input class="btn btn-default pull-right" id="button-fetch" type="button" name="submit" value="Go">
-    </div>
-  </div>
-</div>
 
   <div class="row">
     <div class="col m10 offset-m1" id="collapsed-list">
@@ -28,5 +10,4 @@
       </ul>
     </div>
   </div>
-
 </div>
