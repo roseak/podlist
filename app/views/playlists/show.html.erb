@@ -10,10 +10,10 @@
             <div class="collapsible-header">
               <div class="row" id="row-head-show">
                 <div class="col m1">
-                  <% if episode.image_files.to_a.empty? == false  %>
+                  <% if !episode.image_files.to_a.empty? && episode.image_files.first.url.thumb? %>
                     <img src="<%= episode.image_files.first.url.thumb %>", alt="", id="episode-photo">
                   <% else %>
-                    <i class="material-icons red" id="episode-photo">radio</i>
+                    <i class="material-icons red" id="episode-photo-radio">radio</i>
                   <% end %>
                 </div>
                 <div class="col m11">

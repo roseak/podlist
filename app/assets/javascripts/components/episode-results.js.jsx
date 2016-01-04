@@ -3,7 +3,7 @@ class EpisodeResults extends React.Component {
     super(props)
   }
   render(){
-    var result = _.map(this.props.episodes, function(episode){
+    var results = _.map(this.props.episodes, function(episode){
       return <EpisodeItem episode={episode} current_user={this.props.current_user} key={episode.id} />
     }.bind(this))
     return (

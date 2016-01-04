@@ -13,8 +13,8 @@
 //= require jquery2
 //= require jquery-ui
 //= require jquery_ujs
-//= require jquery.jplayer.min
 //= require react
 //= require react_ujs
 //= require components
+//= require jquery.jplayer.min
 //= require_tree .
