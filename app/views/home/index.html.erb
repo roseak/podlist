@@ -2,6 +2,7 @@
 <div class="container" id="home-page">
 
 <div id="best-shows">
+  <%= react_component('HomeShows', shows: @home_shows) %>
   <%= render 'image_boxes' %>
   <div class="row">
     <div class="col m8 offset-m2" id="home-welcome">Welcome to Podlist!</div>

@@ -17,8 +17,9 @@ gem 'jquery-ui-rails'
 gem 'responders', '~> 2.0'
 gem 'launchy'
 gem 'hashie'
-gem "skylight"
+gem 'skylight'
 gem 'dalli'
+gem 'react-rails'
 
 group :development, :test do
   gem 'capybara'
