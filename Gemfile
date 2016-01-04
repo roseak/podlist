@@ -20,6 +20,7 @@ gem 'hashie'
 gem 'skylight'
 gem 'dalli'
 gem 'react-rails'
+gem 'underscore-rails'
 
 group :development, :test do
   gem 'capybara'
