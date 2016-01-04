@@ -6,6 +6,25 @@ class SearchField extends React.Component {
   updateQuery(event){
     this.setState({query: event.target.value})
   }
+  renderResults(episodes, current_user){
+    var element = this.refs.results
+    ReactDOM.render(
+      <EpisodeResults episodes={episodes} currentUser={current_user} />,
+      element
+    )
+  }
+  handleSearch(){
+    var query = this.state.query
+    $.ajax({
+      type: 'GET',
+      url: '/episodes/search.json?query=' + query,
+      success: function(response){
+        var episodes     = response.episodes.results
+        var current_user = response.current_user
+        this.renderResults(episodes, current_user)
+      }.bind(this)
+    })
+  }
   render(){
     return (
       <div className="row">
