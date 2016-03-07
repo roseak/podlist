@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
-gem 'audiosearch', '~> 1.0.1'
+gem 'audiosearch', '~> 1.0.2'
 gem 'omniauth-twitter'
 gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
