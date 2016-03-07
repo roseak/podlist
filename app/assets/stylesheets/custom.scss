@@ -16,6 +16,11 @@
                 rgba(255,255,255,0.2) 0%,rgba(0,0,0,0.5) 100%);
 }
 
+.user-card {
+  height: 284px;
+  // width: 284px;
+}
+
 
 #front-page {
   text-align: center;
@@ -146,6 +151,7 @@ body {
 
 #user-image {
   height: 200px;
+  width: 200px;
 }
 
 #users-head {
