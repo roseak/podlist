@@ -5,8 +5,8 @@
     <% @users.each do |user| %>
       <div class="col m4">
         <div class="card">
-          <div class="card-image user-card">
-            <%= image_tag "#{user.profile_pic.gsub("_normal", "")}" %>
+          <div class="card-image">
+            <%= image_tag "#{user.profile_pic.gsub("_normal", "")}", class: "user-card" %>
           </div>
           <div class="card-content">
             <h5><%= link_to user.name, user_path(user) %></h5>
